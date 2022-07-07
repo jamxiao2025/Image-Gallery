@@ -1,71 +1,89 @@
-import React from 'react'
-import { useNavigate } from "react-router-dom"
-import useAuth from "../hooks/useAuth"
-import {useRef, useState, useEffect} from 'react'
-/*
-Our (simple) Login component renders a header and a button. When the user clicks on the button, we call login (which we got from our useAuth Hook), then once they're logged in, using navigate, we send them to their /query.
-*/
+import {useRef, useState, useEffect, useContext} from 'react'
+import AuthContext from "../context/AuthProvider"
+//we just created a global state of our app, so now we pull in what we need
 
-const Auth = () => {
-  
-   const passRef = useRef()
-   const errRef = useRef()
+import axios from '../api/axios'
+const LOGIN_URL = '/auth'
+const Login = () => {
+  const {setAuth} = useContext(AuthContext)
+  //if we succesfully login, we will store our auth state in the global context
+  const pwdRef = useRef()
+  const errRef = useRef()
 
-   const [pwd, setPwd] = useState('')
-   const [errMsg, setErrMsg] = useState('')
-   const [success, setSuccess] = useState(false)
-   
-   //This effect is called when the page loads. This sets the focus on the first input (password)
-   useEffect(()=> {
-     passRef.current.focus()
-   },[])
+  const [pwd, setPwd] = useState('')
+  const [errMsg, setErrMsg] = useState('')
+  const [success, setSuccess] = useState(false) //replace with router
 
-   //empty out error message if the user changes password state (change inputs)
-   useEffect(()=>{
-      setErrMsg('')
-   },[pwd])
+  useEffect(() => {
+    pwdRef.current.focus()
+  },[])
 
-   //prevent page from reloading on submit
-   const handleSubmit = async (e) => {
+  useEffect(() => {
+    setErrMsg('')
+  },[pwd])
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(pwd)
-    setPwd('')
-    setSuccess(true)
-   }
-   const navigate = useNavigate()
 
-   const { login } = useAuth()
-   const { authed } = useAuth()
-   console.log(login)
-
-   return(
-     <>
-        {success ? (
-            <section>
-              <h1>You are logged in!</h1>
-              <br />
-              <p>
-                <a href="#">Go Home</a>
-              </p>
-            </section>
-        ): (
-          <section>
-            <p ref={errRef} className={errMsg ? "errmsg": "offscreen" } aria-live="assertive">{errMsg}</p>
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="password">Password:</label>
-              <input 
-                type="password"
-                id="password"
-                ref={passRef}
-                onChange = {(e) => setPwd(e.target.value)}
-                value = {pwd}
-                required
-              />
-            <button> Sign In</button>
-          </form>
-         </section>
-        )}
-     </>
-   )
+    try{
+      const response = await axios.post(LOGIN_URL, 
+        JSON.stringify({pwd}), 
+          {
+            headers: { 'Content-Type': 'application/json'},
+            withCredentials: true
+          }
+      )  
+      console.log(JSON.stringify(response?.data))
+      //storing accessToken
+      const accessToken = response?.data.accessToken
+      const roles = response?.data?.roles
+      setAuth({pwd, roles, accessToken}) //storing this information inside of Auth object
+      setPwd('')
+      setSuccess(true)
+    } catch (err) {
+        if(!err?.response){
+          setErrMsg('No Server Response')
+        } else if (err.response?.status === 400){
+          setErrMsg('Missing Password') //using error messages from backend to display on frontend
+        } else if (err.response?.status === 401){
+          setErrMsg('Unauthorized')
+        } else{
+          setErrMsg('Login Failed')
+        }
+        errRef.current.focus() //set focus on error
+    }
+    
+  }
+  return(
+    <>
+      {success ? (
+        <section>
+          <h1>You are logged in!</h1>
+          <br />
+          <p>
+            <a href="#">Go to Home</a>
+          </p>
+        </section>
+      ): (
+      <section>
+        <p ref={errRef} className={errMsg ? "errmsg": "offscreen"} aria-live="assertive">{errMsg}</p>
+        <h1>Sign In</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="password">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            ref={pwdRef}
+            onChange={(e) => setPwd(e.target.value)}
+            value={pwd}
+            required
+          />
+        </form>
+      </section>
+      )
 }
-export default Auth
+    </>
+  )
+}
+
+export default Login
