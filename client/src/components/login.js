@@ -1,18 +1,21 @@
-import {useRef, useState, useEffect, useContext} from 'react'
-import AuthContext from "../context/AuthProvider"
+import {useRef, useState, useEffect} from 'react'
 //we just created a global state of our app, so now we pull in what we need
-
+import useAuth from '../hooks/useAuth'
 import axios from '../api/axios'
+import { Link, useNavigate, useLocation} from 'react-router-dom'
 const LOGIN_URL = '/auth'
 const Login = () => {
-  const {setAuth} = useContext(AuthContext)
-  //if we succesfully login, we will store our auth state in the global context
+  const {setAuth} = useAuth()
+  
+  const navigate = useNavigate()
+  const location = useLocation()
+  //then navigate to that page
+//if we succesfully login, we will store our auth state in the global context
   const pwdRef = useRef()
   const errRef = useRef()
 
   const [pwd, setPwd] = useState('')
   const [errMsg, setErrMsg] = useState('')
-  const [success, setSuccess] = useState(false) //replace with router
 
   useEffect(() => {
     pwdRef.current.focus()
@@ -39,7 +42,8 @@ const Login = () => {
       const roles = response?.data?.roles
       setAuth({pwd, roles, accessToken}) //storing this information inside of Auth object
       setPwd('')
-      setSuccess(true)
+      //navigate here
+      navigate("search", { replace: true}) //replaces success page 
     } catch (err) {
         if(!err?.response){
           setErrMsg('No Server Response')
@@ -55,16 +59,7 @@ const Login = () => {
     
   }
   return(
-    <>
-      {success ? (
-        <section>
-          <h1>You are logged in!</h1>
-          <br />
-          <p>
-            <a href="#">Go to Home</a>
-          </p>
-        </section>
-      ): (
+    
       <section>
         <p ref={errRef} className={errMsg ? "errmsg": "offscreen"} aria-live="assertive">{errMsg}</p>
         <h1>Sign In</h1>
@@ -80,9 +75,7 @@ const Login = () => {
           />
         </form>
       </section>
-      )
-}
-    </>
+
   )
 }
 
