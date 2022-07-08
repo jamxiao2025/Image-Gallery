@@ -1,11 +1,11 @@
 import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
-import { getImages, searchImages } from '/Users/yan/Desktop/react-photo-gallery/client/src/api';
-import "/Users/yan/Desktop/react-photo-gallery/client/src/App.css"
+import { getImages, searchImages } from '../api';
+import "../css/App.css"
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
-
-const Results = () => {
+import Logout from './Logout'
+const Display = () => {
   const location = useLocation()
   const query = location.state.query
   console.log(query)
@@ -37,7 +37,7 @@ const Results = () => {
 
   return(
     <>
-    
+    <Logout/>
     <div className="image-grid">
       {imageList.map((image)=> <Zoom><img src={image.url} alt={image.public_id}></img></Zoom>)},
     </div>
@@ -45,4 +45,4 @@ const Results = () => {
     </>
   )
 }
-export default Results
+export default Display

@@ -4,33 +4,27 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const {json} = require('body-parser');
 const axios = require('axios');
-const basicAuth = require('express-basic-auth')
-
 const app = express();  //creates an express application
 app.use(cors());
 app.use(json());
-const { parsed: config } = dotenv.config(); //config() returns variable parsed which we are naming config
+//const { parsed: config } = dotenv.config(); //config() returns variable parsed which we are naming config
 
-const BASE_URL = `https://api.cloudinary.com/v1_1/${config.CLOUD_NAME}`
+//const BASE_URL = `https://api.cloudinary.com/v1_1/${config.CLOUD_NAME}`
+const BASE_URL = `https://api.cloudinary.com/v1_1/jamxiao`
+
 const auth = {
-  username: config.API_KEY,
-  password: config.API_SECRET,
+  //username: config.API_KEY,
+  username: "444146749244156",
+  //password: config.API_SECRET,
+  password: "CvTrmsC1PtHuqZrM9wV7y2hmQTE"
 }
 //the only way someone can get these is by hacking into our servers
 
 //SERVER-SIDE AUTHENTICATION
 /*Now when the auth variable is used as a parameter of an endpoint, the response from this endpoint reaches back to the client if and only if the credentials sent along with the request match.*/
 //middleware:
-const loginAuth = basicAuth({
-  users: {
-    admin: '123'
-    },
-});
-app.get('/authenticate', loginAuth, (req, res) => {
-  if (req.auth.user === 'admin') {
-    res.send('admin');
-  }
-});
+
+
 //create an endpoint that react client can call
 //get function will handle all the requests that go to local host 7000/photos
 //refer to admin documentation page for different types of get requests: https://cloudinary.com/documentation/admin_api#get_resources_by_tag
@@ -52,6 +46,7 @@ app.get('/search', async (req, res)=>{
         with_field: req.query.with_field
     }
     })
+    console.log("we been activated")
     return res.send(response.data)
 })
 

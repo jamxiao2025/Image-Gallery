@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import "./css/App.css"
 import Login from './components/Login'
 import Err from './components/404test'
-import DisplayTest from './components/DisplayTest'
-import SearchTest from './components/SearchTest'
+import Display from './components/Display'
+import Search from './components/Search'
 import Layout from './components/Layout'
 import RequireAuth from './components/RequireAuth'
 import { Routes, Route } from 'react-router-dom'
@@ -21,7 +21,7 @@ const App = () => {
           path="/search"
           element={
             <RequireAuth>
-              <SearchTest/>
+              <Search/>
             </RequireAuth>
           }
           />
@@ -29,7 +29,7 @@ const App = () => {
           path="/display"
           element={
             <RequireAuth>
-              <DisplayTest/>
+              <Display/>
             </RequireAuth>
           }
           />

@@ -1,17 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
-import { getImages, searchImages } from '/Users/yan/Desktop/react-photo-gallery/client/src/api';
-import "/Users/yan/Desktop/react-photo-gallery/client/src/App.css"
-import {useAuth} from "/Users/yan/Desktop/react-photo-gallery/client/src/useAuth";
-
-const Query = () => {
+import { getImages, searchImages } from '../api';
+import "../css/App.css"
+import Logout from './Logout'
+const Search = () => {
   const navigate = useNavigate()
-  const { logout } = useAuth()
 
-  const handleLogout = () => {
-    logout()
-    navigate("/")
-   }
   const [imageList, setImageList] = useState([]); 
   //images.resources is the initial state..? which can be accessed by imageList
   //setImageList is the function that will update imageList
@@ -30,16 +24,19 @@ const Query = () => {
   //we need to create a STATEHOOK to hold our images
   //what this does is create a div, and inside the div, is the elements of imageList (which is an array of resources) mapped to <img> divs so it appears as img
   const handleFormSubmit = async (event) => {
-    navigate("/results", { state:
-      {query: searchValue}
-    })
+    try{
+      navigate("/display", { state:
+        {query: searchValue}
+      })
+    } catch (err) {
+      console.log(err)
+    }
     //event.preventDefault()//preventing the form from refreshing the page
   }
   
   return(
     <>
-    <h1>Logout</h1>
-      <button onClick={handleLogout}>Log out</button>
+    <Logout/>
     <form onSubmit={handleFormSubmit}>
       <input value = {searchValue} onChange={(event)=> setSearchValue(event.target.value)} required='required' placeholder="Enter a search value..."></input>
       <button type="submit">Search</button>
@@ -49,4 +46,4 @@ const Query = () => {
     </>
   )
 }
-export default Query
+export default Search
