@@ -5,6 +5,7 @@ import "../css/App.css"
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 import Logout from './Logout'
+import '../css/ImageStyling.css'
 const Display = () => {
   const location = useLocation()
   const query = location.state.query

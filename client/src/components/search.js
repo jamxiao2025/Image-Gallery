@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { getImages, searchImages } from '../api';
 import "../css/App.css"
 import Logout from './Logout'
+//enter search value -> keyword
 const Search = () => {
   const navigate = useNavigate()
 
@@ -38,8 +39,8 @@ const Search = () => {
     <>
     <Logout/>
     <form onSubmit={handleFormSubmit}>
-      <input value = {searchValue} onChange={(event)=> setSearchValue(event.target.value)} required='required' placeholder="Enter a search value..."></input>
-      <button type="submit">Search</button>
+      <input value = {searchValue} onChange={(event)=> setSearchValue(event.target.value)} required='required' placeholder="keyword"></input>
+     {/* <button type="submit">Search</button>*/}
     </form>
     <h1>{searchMessage}</h1>
   

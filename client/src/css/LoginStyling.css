@@ -1,0 +1,17 @@
+input{
+  outline: none;
+  /*background-color: lightblue; Adds background to form */
+  border: none;
+  font-size:30px;
+  width: 300px;
+  height: 1000px;
+  padding: 800;
+  padding-left: 8px;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: bold;
+
+}
+form{
+  text-align: center;
+}

@@ -3,6 +3,7 @@ import {useRef, useState, useEffect} from 'react'
 import useAuth from '../hooks/useAuth'
 import axios from '../api/axios'
 import { Link, useNavigate, useLocation} from 'react-router-dom'
+import '../css/LoginStyling.css'
 const LOGIN_URL = '/auth'
 const Login = () => {
   const {setAuth} = useAuth()
@@ -11,11 +12,12 @@ const Login = () => {
   const location = useLocation()
   //then navigate to that page
 //if we succesfully login, we will store our auth state in the global context
-  const pwdRef = useRef()
+  const pwdRef = useRef(null)
   const errRef = useRef()
 
   const [pwd, setPwd] = useState('')
   const [errMsg, setErrMsg] = useState('')
+  
 
   useEffect(() => {
     pwdRef.current.focus()
@@ -43,7 +45,7 @@ const Login = () => {
       setAuth({pwd, roles, accessToken}) //storing this information inside of Auth object
       setPwd('')
       //navigate here
-      navigate("search", { replace: true}) //replaces success page 
+      navigate("inter", { replace: true}) //replaces success page 
     } catch (err) {
         if(!err?.response){
           setErrMsg('No Server Response')
@@ -62,9 +64,8 @@ const Login = () => {
     
       <section>
         <p ref={errRef} className={errMsg ? "errmsg": "offscreen"} aria-live="assertive">{errMsg}</p>
-        <h1>Sign In</h1>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password"></label>
           <input 
             type="password" 
             id="password" 
@@ -72,6 +73,7 @@ const Login = () => {
             onChange={(e) => setPwd(e.target.value)}
             value={pwd}
             required
+            autoFocus
           />
         </form>
       </section>

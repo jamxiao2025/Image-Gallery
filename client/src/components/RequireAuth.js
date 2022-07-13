@@ -5,14 +5,14 @@ import {Route} from 'react-router-dom'
 //of the props to the <Route /> component such as exact & the path
 const RequireAuth = ({children}) => {
   const { auth } = useAuth()
-  console.log(auth)
+  console.log(auth.accessToken)
   const location = useLocation()
 
   return(
-    auth.accessToken !=='' ?(
+    typeof auth.accessToken !== 'undefined' ?( //change condition to null object
       children
     ): (
-      <Navigate to="/login" replace state={{path: location.pathname}}/>
+      <Navigate to="/" replace state={{path: location.pathname}}/>
     )
   )
   //is there user attribute, that means they logged in 
