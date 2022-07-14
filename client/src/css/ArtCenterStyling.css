@@ -1,0 +1,19 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+.art { 
+ /* background-color: #ECEEE3;*/
+}
+.ArtCenterMain{
+  min-height: 100vh;
+  min-width: 100vw;
+  display:block;
+  justify-content: center;
+}
+
+.artCenterImage{
+  width: 100%;
+  height: auto;
+  justify-self: center;
+}

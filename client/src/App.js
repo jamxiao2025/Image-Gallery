@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import "./css/App.css"
 import Login from './components/Login'
-import Err from './components/404test'
+import Err from './components/404'
 import Display from './components/Display'
 import DisplayTest from './components/DisplayTest'
 import Search from './components/Search'
 import Layout from './components/Layout'
-import Interceptor from './components/Interceptor'
+import Portal from './components/Portal.js'
+import ArtCenter from './components/ArtCenter'
 import RequireAuth from './components/RequireAuth'
 import { Routes, Route } from 'react-router-dom'
 
@@ -20,10 +21,18 @@ const App = () => {
 
           {/*Protected Routes*/}
           <Route 
-          path="/inter"
+          path="/portal"
           element={
             <RequireAuth>
-              <Interceptor/>
+              <Portal/>
+            </RequireAuth>
+          }
+          />
+          <Route 
+          path="/artcenter"
+          element={
+            <RequireAuth>
+              <ArtCenter/>
             </RequireAuth>
           }
           />

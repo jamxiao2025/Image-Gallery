@@ -45,7 +45,7 @@ const Login = () => {
       setAuth({pwd, roles, accessToken}) //storing this information inside of Auth object
       setPwd('')
       //navigate here
-      navigate("inter", { replace: true}) //replaces success page 
+      navigate("portal", { replace: true}) //replaces success page 
     } catch (err) {
         if(!err?.response){
           setErrMsg('No Server Response')
@@ -61,22 +61,22 @@ const Login = () => {
     
   }
   return(
-    
-      <section>
-        <p ref={errRef} className={errMsg ? "errmsg": "offscreen"} aria-live="assertive">{errMsg}</p>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="password"></label>
-          <input 
-            type="password" 
-            id="password" 
-            ref={pwdRef}
-            onChange={(e) => setPwd(e.target.value)}
-            value={pwd}
-            required
-            autoFocus
+    <body class="LoginBody">
+      <div class="halfborder">some text</div>
+      <main className="LoginForm">
+        <form class="LoginForm" onSubmit={handleSubmit}>
+          <input
+          type="password"
+          id="password"
+          ref={pwdRef}
+          onChange={(e) => setPwd(e.target.value)}
+          value={pwd}
+          required
+          autoFocus
           />
         </form>
-      </section>
+      </main>
+    </body>
 
   )
 }

@@ -1,17 +1,43 @@
-input{
-  outline: none;
-  /*background-color: lightblue; Adds background to form */
-  border: none;
-  font-size:30px;
-  width: 300px;
-  height: 1000px;
-  padding: 800;
-  padding-left: 8px;
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  text-align: center;
-  font-weight: bold;
-
 }
+
+.halfborder{
+  z-index: 1;
+  position:absolute;
+  height:50%;
+  width:50%;
+  border: 2px dashed red;
+}
+body {
+  min-height: 100vh;
+}
+
+
+
+/*/https://www.w3schools.com/css/css_align.asp
+Look into how this works/*/
 form{
+  display:flex;
+  margin: auto;
+  width: 50%;
+  height: 100vh;
+}
+input{
+  border: none;
+  margin: auto;
+  width: 50%;
   text-align: center;
+  font-size: 25px;
+  padding-bottom: 1rem;
+}
+
+/* this is to disable the safari icons */
+::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
 }
