@@ -2,18 +2,33 @@
   padding: 0;
   margin: 0;
 }
-.art { 
- /* background-color: #ECEEE3;*/
-}
-.ArtCenterMain{
-  min-height: 100vh;
-  min-width: 100vw;
-  display:block;
-  justify-content: center;
+.ArtCenterBody { 
+  background-color: white;
+  overflow: overlay;
+  /*ECEEE3*/
 }
 
-.artCenterImage{
-  width: 100%;
-  height: auto;
+
+.ArtCenterMain{
+  height: 100vh;
+  width:100%;
+  display: block;
+  /*display:flex;* is for the pdf */
+  justify-content: center;
+}
+.ArtCenterImage{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
   justify-self: center;
+  width: 80%;
+  height: auto;
+}
+iframe{
+
+  width: 100%;
+  height: 100%;
+  border-color: transparent;
+  border: 0;
 }

@@ -1,0 +1,25 @@
+#HeaderClass{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#start{
+  align-self: start;
+}
+#end{
+  align-self: end;
+}
+
+.HeaderButton{
+  background-color: transparent;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  margin-top:2.5%;
+  font-size: 1.17vw;
+}
+

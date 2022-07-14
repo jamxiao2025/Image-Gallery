@@ -1,14 +1,10 @@
 button{
   outline: none;
   /*background-color: lightblue; Adds background to form */
+  background-color: none;
   border: none;
   color: darkgrey;
   font-size:30px;
-  box-sizing: border-box;
-  text-align: center;
   font-weight: bold;
-  background-color: transparent;
-  padding-top: 20px;
-  padding-left:50px;
   cursor: pointer;
 }

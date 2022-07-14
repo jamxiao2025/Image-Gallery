@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import { getImages, searchImages } from '../api';
 import "../css/App.css"
+import Header from './Header'
 import Logout from './Logout'
 //enter search value -> keyword
 const Search = () => {
@@ -37,9 +38,10 @@ const Search = () => {
   
   return(
     <>
-    <Logout/>
+    <Header/>
+    <div class="halfborder">some text</div>
     <form onSubmit={handleFormSubmit}>
-      <input value = {searchValue} onChange={(event)=> setSearchValue(event.target.value)} required='required' placeholder="keyword"></input>
+      <input autoFocus value = {searchValue} onChange={(event)=> setSearchValue(event.target.value)} required='required' placeholder="keyword"></input>
      {/* <button type="submit">Search</button>*/}
     </form>
     <h1>{searchMessage}</h1>

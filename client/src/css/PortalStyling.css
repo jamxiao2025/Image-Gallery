@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
 }
-header{
+#PortalHeader{
   position: fixed;
   top: 0;
   left: 0;
@@ -10,6 +10,27 @@ header{
   background-color: black;
   width: 100%;
 }
+#PortalHeaderClass{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  #start{
+    align-self: start;
+  }
+  
+  .PortalExit{
+    background-color: transparent;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top:2.5%;
+    font-size: 1.17vw;
+  }
 main{
   height: 100vh;
 }
@@ -27,15 +48,17 @@ main{
 }
 
 .donda{
-  font-size: 5.9vh;
+  font-size: 5.3vw;
   grid-area: donda;
   justify-self: center;
   align-self: center;
+  background-color: transparent;
 }
 
 .artcenter{
-  font-size: 5.9vh;
+  font-size: 5.3vw;
   grid-area: artcenter;
   justify-self: center;
   align-self: center;
+  background-color: transparent;
 }
