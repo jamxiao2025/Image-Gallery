@@ -1,0 +1,31 @@
+/*button:hover{
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+  box-shadow: 10px 10px 5px #888888;
+}*/
+/*
+img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}*/
+
+.DisplayImage {
+	object-fit: contain;
+	width: 100%;
+	height: 100%;
+	justify-self: stretch;
+}
+
+.DisplayImageGrid {
+	padding-top: 7%;
+	display: grid;
+	width: 70%;
+	margin: auto;
+	gap: 0.5rem;
+	grid-template-columns: repeat(3, minmax(0px, 1fr)); /*0 prevents images from clipping outside border-box*/
+	grid-template-rows: auto;
+}

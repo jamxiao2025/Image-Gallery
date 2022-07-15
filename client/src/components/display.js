@@ -5,7 +5,8 @@ import "../css/App.css"
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 import Logout from './Logout'
-import '../css/ImageStyling.css'
+import '../css/DisplayStyling.css'
+import Header from './Header'
 const Display = () => {
   const location = useLocation()
   const query = location.state.query
@@ -29,7 +30,9 @@ const Display = () => {
     }
     inputSearch()
  }, []) //depen
-   
+  
+
+
   //when the app loads, we want to immediately call our API to get our photos
  //dependency array and the different things that can trigger when this is run, which means this only gets runs when the app is loaded.
   //console.log('images', images["resources"][0]) this only displays our image information in the console, but we want to display our actual images
@@ -38,11 +41,14 @@ const Display = () => {
 
   return(
     <>
-    <Logout/>
-    <div className="image-grid">
-      {imageList.map((image)=> <Zoom><img src={image.url} alt={image.public_id}></img></Zoom>)},
+     <body className="DisplayBody">
+    <Header/>
+    <main className="DisplayMain">
+    <div className="DisplayImageGrid">
+      {imageList.map((image)=> <Zoom><img class="DisplayImage"src={image.url} alt={image.public_id}></img></Zoom>)},
     </div>
-    
+    </main>
+    </body>
     </>
   )
 }

@@ -5,7 +5,7 @@ import '../css/LogoutStyling.css'
 const Logout = () => {
   const {setAuth} = useContext(AuthContext)
   const navigate = useNavigate()
-
+ console.log('you been logged out')
   const logout = async() => {
     setAuth({})
     navigate('/')

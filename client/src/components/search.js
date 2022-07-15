@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useLocation} from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import { getImages, searchImages } from '../api';
 import "../css/App.css"
@@ -6,6 +6,7 @@ import Header from './Header'
 import Logout from './Logout'
 //enter search value -> keyword
 const Search = () => {
+  const location= useLocation()
   const navigate = useNavigate()
 
   const [imageList, setImageList] = useState([]); 
@@ -28,7 +29,9 @@ const Search = () => {
   const handleFormSubmit = async (event) => {
     try{
       navigate("/display", { state:
-        {query: searchValue}
+        {query: searchValue,
+          prevpage: location
+        }
       })
     } catch (err) {
       console.log(err)

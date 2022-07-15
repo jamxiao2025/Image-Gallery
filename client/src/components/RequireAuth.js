@@ -7,7 +7,6 @@ const RequireAuth = ({children}) => {
   const { auth } = useAuth()
   console.log(auth.accessToken)
   const location = useLocation()
-
   return(
     typeof auth.accessToken !== 'undefined' ?( //change condition to null object
       children

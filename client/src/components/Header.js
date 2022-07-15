@@ -5,14 +5,13 @@ import '../css/HeaderStyling.css'
 import AuthContext from "../context/AuthProvider"
 
 const Header = () => {
-  const {state} = useLocation()
-  const {prevpage} = state
-  console.log(prevpage)
+  
   const {setAuth} = useContext(AuthContext)
   const navigate = useNavigate()
   const ref = useRef(null);
   const handleClick = (e) => {
       setAuth({})
+      console.log('header logout secured')
       navigate("/",  { replace: true})
     }
   
@@ -20,7 +19,7 @@ const Header = () => {
     <>
       <header id="HeaderClass">
         <button ref={ref} id="start" className="HeaderButton" onClick={handleClick}>exit</button>
-        <button ref={ref} id="end" className="HeaderButton" onClick={()=>navigate(prevpage)}>back</button>
+        <button ref={ref} id="end" className="HeaderButton" onClick={()=>navigate(-1)}>back</button>
       </header>
     </>
   )
