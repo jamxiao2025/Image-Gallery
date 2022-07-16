@@ -1,0 +1,30 @@
+.artcenter{
+
+}
+
+.PDFGrid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "yeezy . . . ."
+  ". . . . ."
+  ". . . . ."
+}
+
+#yeezy{
+  grid-area: yeezy;
+  outline: none;
+  /*background-color: lightblue; Adds background to form */
+  background-color: none;
+  border: none;
+  color: darkgrey;
+  font-size:1.17vw;
+  font-weight: bold;
+  cursor: pointer;
+  justify-self: end;
+  align-self: end;
+}
+#yeezy:hover{
+  color: rgba(236, 238, 227, 1)
+}

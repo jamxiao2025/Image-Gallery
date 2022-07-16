@@ -28,10 +28,12 @@ const Portal = () => {
         <button ref={ref} id="start" className="PortalExit" onClick={handleClick}>exit</button>
       </header>
     <body>
-    <div class="halfborder">some text</div>
+    <div class="halfborder1">some text</div>
+    <div class="halfborder2">some text</div>
+    <div class="halfborder3">some text</div>
       <main className="grid">
-        <button ref={ref} className="donda" onClick={handleClick}>donda</button>
-        <button ref={ref}className="artcenter" onClick={handleClick}>artcenter</button>
+        <button ref={ref} className="artcenter" onClick={handleClick}>artcenter</button>
+        <button ref={ref}className="donda" onClick={handleClick}>donda</button>
       </main>
     </body>
     </>

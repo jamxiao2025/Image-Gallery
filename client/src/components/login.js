@@ -62,7 +62,9 @@ const Login = () => {
   }
   return(
     <body class="LoginBody">
-      <div class="halfborder">some text</div>
+    <div class="halfborder1"></div>
+    <div class="halfborder2"></div>
+    <div class="halfborder3"></div>
       <main className="LoginForm">
         <form class="LoginForm" onSubmit={handleSubmit}>
           <input
@@ -72,7 +74,7 @@ const Login = () => {
           onChange={(e) => setPwd(e.target.value)}
           value={pwd}
           required
-          autoFocus
+          autoFocus={true}
           />
         </form>
       </main>

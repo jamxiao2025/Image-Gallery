@@ -42,9 +42,13 @@ const Search = () => {
   return(
     <>
     <Header/>
-    <div class="halfborder">some text</div>
+    <div class="halfborder1"></div>
+    <div class="halfborder2"></div>
+    <div class="halfborder3"></div>
+
+
     <form onSubmit={handleFormSubmit}>
-      <input autoFocus value = {searchValue} onChange={(event)=> setSearchValue(event.target.value)} required='required' placeholder="keyword"></input>
+      <input autoFocus={true} value = {searchValue} onChange={(event)=> setSearchValue(event.target.value)} required='required' placeholder="keyword"></input>
      {/* <button type="submit">Search</button>*/}
     </form>
     <h1>{searchMessage}</h1>

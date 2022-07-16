@@ -9,6 +9,7 @@ import SearchTest from './components/SearchTest'
 import Layout from './components/Layout'
 import Portal from './components/Portal.js'
 import ArtCenter from './components/ArtCenter'
+import YeezyPDF from './components/YeezyPDF'
 import RequireAuth from './components/RequireAuth'
 import { Routes, Route } from 'react-router-dom'
 
@@ -29,11 +30,19 @@ const App = () => {
             </RequireAuth>
           }
           />
-          <Route 
+           <Route 
           path="/artcenter"
           element={
             <RequireAuth>
               <ArtCenter/>
+            </RequireAuth>
+          }
+          />
+          <Route 
+          path="/yeezy"
+          element={
+            <RequireAuth>
+              <YeezyPDF/>
             </RequireAuth>
           }
           />

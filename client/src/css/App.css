@@ -1,0 +1,15 @@
+button:hover{
+  color: rgb(1,1,1,1);
+}
+input{
+  font-weight: bold;
+}
+/*https://stackoverflow.com/questions/34580572/center-h1-in-the-middle-of-screen*/
+.nahMsg{
+  text-align: center;
+  -webkit-transition: color 2.5s; /* For Safari 3.0 to 6.0 */
+        transition: color 2.5s; 
+}
+.nahMsg:hover{
+  color: rgba(255, 255, 255, 0.1)
+}

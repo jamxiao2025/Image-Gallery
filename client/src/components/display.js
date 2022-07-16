@@ -41,14 +41,22 @@ const Display = () => {
 
   return(
     <>
-     <body className="DisplayBody">
-    <Header/>
-    <main className="DisplayMain">
-    <div className="DisplayImageGrid">
-      {imageList.map((image)=> <Zoom><img class="DisplayImage"src={image.url} alt={image.public_id}></img></Zoom>)},
-    </div>
-    </main>
-    </body>
+    {searchMessage === ("SORRY...NO RESULTS WERE FOUND!") ? (
+      <body className="DisplayBodyNah">
+        <h1 className="nahMsg">nah</h1>
+        <Header/>
+      </body>
+    ):(
+      <body className="DisplayBody">
+      <Header/>
+      <main className="DisplayMain">
+      <div className="DisplayImageGrid">
+        {imageList.map((image)=> <Zoom><img class="DisplayImage"src={image.url} alt={image.public_id}></img></Zoom>)},
+      </div>
+      </main>
+      </body>
+    )}
+    
     </>
   )
 }

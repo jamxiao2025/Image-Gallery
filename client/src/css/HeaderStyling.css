@@ -22,5 +22,12 @@
   margin-right: 2.5%;
   margin-top:2.5%;
   font-size: 1.17vw;
+  outline: none;
+  /*background-color: lightblue; Adds background to form */
+  background-color: none;
+  border: none;
+  color: darkgrey;
+  font-weight: bold;
+  cursor: pointer;
 }
 

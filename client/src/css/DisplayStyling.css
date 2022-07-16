@@ -19,13 +19,30 @@ img {
 	height: 100%;
 	justify-self: stretch;
 }
-
+.DisplayImageGrid button:hover{
+	-o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+  box-shadow: 10px 10px 5px #888888;
+}
 .DisplayImageGrid {
 	padding-top: 7%;
 	display: grid;
 	width: 70%;
 	margin: auto;
-	gap: 0.5rem;
+	/*0.5rem*/
+	gap: 5%;
+	row-gap: 2.5%;
 	grid-template-columns: repeat(3, minmax(0px, 1fr)); /*0 prevents images from clipping outside border-box*/
 	grid-template-rows: auto;
+}
+
+/*https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container*/
+.DisplayBodyNah{
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }

@@ -1,45 +1,26 @@
-import { useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from "react-router-dom";
+import React, { useEffect, useState, useRef } from 'react';
 import Header from './Header'
-//import Logout from './Logout'
-//import '../css/LogoutStyling.css'
-import image1 from './images/0001.jpg'
-import image2 from './images/0002.jpg'
-import image3 from './images/0003.jpg'
-import image4 from './images/0004.jpg'
-import image5 from './images/0005.jpg'
-import image6 from './images/0006.jpg'
-import image7 from './images/0007.jpg'
-import image8 from './images/0008.jpg'
-import image9 from './images/0009.jpg'
-import image10 from './images/0010.jpg'
-import image11 from './images/0011.jpg'
-import image12 from './images/0012.jpg'
-import '../css/ArtCenterStyling.css'
+import '../css/PDFListStyling.css'
 //enter search value -> keyword
-const ArtCenter = () => {
+const ArtCenter = () => { 
+  const location = useLocation()
   const navigate = useNavigate()
+  const ref = useRef(null);
+  const handleClick = (e) => {
+    const btn = e.target.id
+    console.log(btn)
+    navigate(`/${btn}`)
+  }
+  
   return(
     <>
-    <Header/>
-    <body className="ArtCenterBody">
-    {/*}  <div class="halfborder"></div>*/}
+    <body>
+     <Header/>
     <div class="halfborder">some text</div>
-
-        <main class="ArtCenterMain">
-          <img className="ArtCenterImage" src={image1}/>
-          <img className="ArtCenterImage" src={image2}/>
-          <img className="ArtCenterImage" src={image3}/>
-          <img className="ArtCenterImage" src={image4}/>
-          <img className="ArtCenterImage" src={image5}/>
-          <img className="ArtCenterImage" src={image6}/>
-          <img className="ArtCenterImage" src={image7}/>
-          <img className="ArtCenterImage" src={image8}/>
-          <img className="ArtCenterImage" src={image9}/>
-          <img className="ArtCenterImage" src={image10}/>
-          <img className="ArtCenterImage" src={image11}/>
-          <img className="ArtCenterImage" src={image12}/>
-        </main>
+      <main className="PDFGrid">
+        <button ref={ref} id="yeezy" className="artcenter" onClick={handleClick}>yeezy</button>
+      </main>
     </body>
     </>
   )
