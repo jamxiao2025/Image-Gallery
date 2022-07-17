@@ -3,34 +3,37 @@ import {useRef, useState, useEffect} from 'react'
 import useAuth from '../hooks/useAuth'
 import axios from '../api/axios'
 import { Link, useNavigate, useLocation} from 'react-router-dom'
-import '../css/LoginStyling.css'
+import '../css/LoginTestStyling.css'
 import BorderGrid from '../components/BorderGrid'
 const LOGIN_URL = '/auth'
-const Login = () => {
+const LoginTest = () => {
   const {setAuth} = useAuth()
-  
+
   const navigate = useNavigate()
   const location = useLocation()
+
+  const span = useRef();
+
+  const [pwd, setContent] = useState('');
+  const [width, setWidth] = useState(0);
+  
+
   //then navigate to that page
 //if we succesfully login, we will store our auth state in the global context
-  const pwdRef = useRef(null)
-  const errRef = useRef()
-
-  const [pwd, setPwd] = useState('')
-  const [errMsg, setErrMsg] = useState('')
   
 
   useEffect(() => {
-    pwdRef.current.focus()
-  },[])
+    setWidth(span.current.offsetWidth*3);
 
-  useEffect(() => {
-    setErrMsg('')
-  },[pwd])
+  }, [pwd]);
+
+  const changeHandler = evt => {
+    setContent(evt.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+    console.log(pwd)
     try{
       const response = await axios.post(LOGIN_URL, 
         JSON.stringify({pwd}), 
@@ -44,41 +47,29 @@ const Login = () => {
       const accessToken = response?.data.accessToken
       const roles = response?.data?.roles
       setAuth({pwd, roles, accessToken}) //storing this information inside of Auth object
-      setPwd('')
+      setContent('')
       //navigate here
       navigate("portal", { replace: true}) //replaces success page 
     } catch (err) {
-        if(!err?.response){
-          setErrMsg('No Server Response')
-        } else if (err.response?.status === 400){
-          setErrMsg('Missing Password') //using error messages from backend to display on frontend
-        } else if (err.response?.status === 401){
-          setErrMsg('Unauthorized')
-        } else{
-          setErrMsg('Login Failed')
-        }
-        errRef.current.focus() //set focus on error
+        console.log(err)
     }
-    
   }
-  return(
-    <body class="LoginBody">
+  return (
+<body class="LoginBody">
+    <BorderGrid/>
       <main className="LoginForm">
-        <form class="LoginForm" onSubmit={handleSubmit}>
-          <input
-          type="password"
-          id="password"
-          ref={pwdRef}
-          onChange={(e) => setPwd(e.target.value)}
-          value={pwd}
-          required
-          autoFocus={true}
-          />
-        </form>
+      <form class="LoginForm" onSubmit={handleSubmit} >
+      <span id="hide" ref={span}>{pwd}</span>
+      <input 
+      type="password" 
+      style={{width: width*1.5, height:width * 2}} /*height: width * 2 -1 for empty space at start */
+      autoFocus 
+      onChange={changeHandler} 
+      />
+      </form>
       </main>
     </body>
-
   )
 }
 
-export default Login
+export default LoginTest

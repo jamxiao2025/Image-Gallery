@@ -4,6 +4,8 @@ import Logout from './Logout'
 import '../css/LogoutStyling.css'
 import '../css/PortalStyling.css'
 import Header from './Header'
+import BorderGrid from '../components/BorderGrid'
+
 //enter search value -> keyword
 const Portal = () => { 
   const location = useLocation()
@@ -28,9 +30,7 @@ const Portal = () => {
         <button ref={ref} id="start" className="PortalExit" onClick={handleClick}>exit</button>
       </header>
     <body>
-    <div class="halfborder1">some text</div>
-    <div class="halfborder2">some text</div>
-    <div class="halfborder3">some text</div>
+    {/*<BorderGrid/>*/}
       <main className="grid">
         <button ref={ref} className="artcenter" onClick={handleClick}>artcenter</button>
         <button ref={ref}className="donda" onClick={handleClick}>donda</button>

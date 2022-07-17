@@ -4,6 +4,8 @@ import { getImages, searchImages } from '../api';
 import "../css/App.css"
 import Header from './Header'
 import Logout from './Logout'
+import BorderGrid from '../components/BorderGrid'
+
 //enter search value -> keyword
 const Search = () => {
   const location= useLocation()
@@ -42,9 +44,6 @@ const Search = () => {
   return(
     <>
     <Header/>
-    <div class="halfborder1"></div>
-    <div class="halfborder2"></div>
-    <div class="halfborder3"></div>
 
 
     <form onSubmit={handleFormSubmit}>

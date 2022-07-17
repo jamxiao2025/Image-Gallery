@@ -8,16 +8,15 @@ const ArtCenter = () => {
   const navigate = useNavigate()
   const ref = useRef(null);
   const handleClick = (e) => {
-    const btn = e.target.id
-    console.log(btn)
-    navigate(`/${btn}`)
+    const path = e.target.id
+    console.log(`Travelling to: ${path}`)
+    navigate(`/${path}`)
   }
-  
+
   return(
     <>
     <body>
      <Header/>
-    <div class="halfborder">some text</div>
       <main className="PDFGrid">
         <button ref={ref} id="yeezy" className="artcenter" onClick={handleClick}>yeezy</button>
       </main>

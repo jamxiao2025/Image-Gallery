@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./css/App.css"
 import Login from './components/Login'
+import LoginTest from './components/LoginTest'
 import Err from './components/404'
 import Display from './components/Display'
 import DisplayTest from './components/DisplayTest'
@@ -9,7 +10,7 @@ import SearchTest from './components/SearchTest'
 import Layout from './components/Layout'
 import Portal from './components/Portal.js'
 import ArtCenter from './components/ArtCenter'
-import YeezyPDF from './components/YeezyPDF'
+import YeezyPDF from './components/PDFs/YeezyPDF'
 import RequireAuth from './components/RequireAuth'
 import { Routes, Route } from 'react-router-dom'
 

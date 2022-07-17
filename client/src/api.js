@@ -3,6 +3,7 @@
 //now we can complete the circle by having our UI connect with our server
 // react-client -> api -> cloudinary -> react-client
 //the .env holds the API url 
+import {Shoes, Car} from './Regex'
 export const API_URL = process.env.REACT_APP_API_URL //export makes this usable by components
 export const getImages = async () => {
   const response = await fetch(`${API_URL}/photos`)
@@ -14,7 +15,23 @@ export const getImages = async () => {
 export const searchImages = async (searchValue) => {
   console.log(API_URL)
   const params = new URLSearchParams()
-  params.append(`expression`, searchValue)
+  console.log(typeof(searchValue))
+  var expr = searchValue
+  console.log(Shoes.test(expr))
+  console.log(expr)
+  switch(true){
+    case (Shoes.test(expr) === true):
+      expr = 'shoes'
+      console.log(`expr passed the test, it should now be: shoes, but is ${expr}`)
+      break
+    case (Car.test(expr) === true):
+      expr = 'car'
+      break
+    default:
+      expr = searchValue
+  }
+  console.log(`Post Regex, expr should be shoes, but is: ${expr}`)
+  params.append(`expression`, expr)
   params.append(`with_field`, "tags")
   const response = await fetch(`${API_URL}/search?${params}`)
  // const response = await fetch(`${API_URL}/search?${params}`)

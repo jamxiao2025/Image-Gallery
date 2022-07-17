@@ -35,3 +35,23 @@ input{
   position: absolute;
   right: 0;
 }
+
+#hide {
+  position: absolute;
+  opacity: 0;
+  z-index: -100;
+  white-space: pre;
+}
+
+input {
+  min-width: 20px;
+  padding: 0px;
+}
+main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+button:hover{
+  cursor: pointer;
+}

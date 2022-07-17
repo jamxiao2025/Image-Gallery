@@ -13,6 +13,11 @@ img {
 	object-fit: cover;
 }*/
 
+.DisplayMain{
+	width: 100%;
+	height: 100%;
+}
+
 .DisplayImage {
 	object-fit: contain;
 	width: 100%;

@@ -55,11 +55,12 @@ main{
 }
 
 .donda{
+  z-index: 100;
   font-size: 2.93vh;
   grid-area: donda;
   justify-self: center;
   align-self: center;
-  background-color: transparent;
+  background-color: white;
   outline: none;
   /*background-color: lightblue; Adds background to form */
   background-color: none;
@@ -74,7 +75,7 @@ main{
   grid-area: artcenter;
   justify-self: center;
   align-self: center;
-  background-color: transparent;
+  background-color: white;
   outline: none;
   /*background-color: lightblue; Adds background to form */
   background-color: none;

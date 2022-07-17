@@ -12,6 +12,12 @@
 #start{
   align-self: start;
 }
+#startinvis{
+  align-self: start;
+  z-index: -10000;
+  color: white;
+  cursor: auto;
+}
 #end{
   align-self: end;
 }
@@ -30,4 +36,3 @@
   font-weight: bold;
   cursor: pointer;
 }
-

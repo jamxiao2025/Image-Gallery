@@ -18,7 +18,7 @@ const Header = () => {
   return(
     <>
       <header id="HeaderClass">
-        <button ref={ref} id="start" className="HeaderButton" onClick={handleClick}>exit</button>
+        <button ref={ref} id="start" className="HeaderButton" onClick={handleClick} >exit</button>
         <button ref={ref} id="end" className="HeaderButton" onClick={()=>navigate(-1)}>back</button>
       </header>
     </>
