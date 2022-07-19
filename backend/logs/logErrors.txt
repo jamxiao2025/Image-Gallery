@@ -1,0 +1,14 @@
+20220703		3df54b8c-4d9d-42c7-bd20-da8701c907ea	Error: Not allowed by CORS
+20220703		6941049d-0bc3-406d-a2d3-c909755c0181	Error: ENOENT: no such file or directory, stat '/Users/yan/Desktop/nodeTut/tut8/views/subdir/test.html'
+20220704		86f56c5b-19c4-44b9-b2e9-14465a7619f4	Error: Not allowed by CORS
+20220704		41bd4d9e-526a-407e-b4e1-d57efd975108	Error: ENOENT: no such file or directory, stat '/Users/yan/Desktop/nodeTut/tut9/views/new-page.html'
+20220704		4ec946f4-c745-44d4-a50e-31f12ae48c45	Error: Cannot set headers after they are sent to the client
+20220704		951d3fb1-10f6-4d9f-b741-be7ff4f23125	Error: Cannot set headers after they are sent to the client
+20220706		ec005117-2e17-407d-80fb-d0d328fbdc44	ReferenceError: decoded is not defined
+20220706		94f88f18-19cf-4b9d-8717-7e44c9b68a67	ReferenceError: decoded is not defined
+20220706		5d86cae0-3be8-4273-9098-c9536de8d964	SyntaxError: Unexpected string in JSON at position 26
+20220706		cb0aba5b-3c40-4525-b082-b80bf89943c9	Error: Cannot set headers after they are sent to the client
+20220706		3bc6bd7c-53ab-4725-b92e-58b95654b5b9	Error: Cannot set headers after they are sent to the client
+20220706		60cdba01-12a7-43dd-9e6a-f8c45dc93b67	Error: Cannot set headers after they are sent to the client
+20220706		014b86b6-02b9-44f0-8758-aa5db14ecdec	Error: Cannot set headers after they are sent to the client
+20220706		81c625d0-e0e3-4ead-a030-56ff35841bae	SyntaxError: Unexpected string in JSON at position 52

@@ -1,15 +1,21 @@
-//logic to run server .. the installations and changes we made to package.json might affect how this website works when it's uploaded
-const express = require('express');
-const dotenv = require('dotenv');
-const cors = require('cors');
+const express = require('express')
+require('dotenv').config() 
+const app = express()
+const path = require('path')
+const cors = require('cors')
+const fs = require('fs')
+const {logger} = require('./middleware/logEvents')
+const errorHandler = require('./middleware/errorHandler')
+const corsOptions = require('./config/corsOptions')
+const verifyJWT = require('./middleware/verifyJWT')
+const cookieParser = require('cookie-parser')
+const credentials = require('./middleware/credentials')
+const mongoose = require('mongoose')
+const connectDB = require('./config/dbConn')
 const {json} = require('body-parser');
 const axios = require('axios');
-const app = express();  //creates an express application
-app.use(cors());
-app.use(json());
-//const { parsed: config } = dotenv.config(); //config() returns variable parsed which we are naming config
 
-//const BASE_URL = `https://api.cloudinary.com/v1_1/${config.CLOUD_NAME}`
+const PORT = process.env.PORT || 3500
 const BASE_URL = `https://api.cloudinary.com/v1_1/jamxiao`
 
 const auth = {
@@ -18,16 +24,34 @@ const auth = {
   //password: config.API_SECRET,
   password: "CvTrmsC1PtHuqZrM9wV7y2hmQTE"
 }
-//the only way someone can get these is by hacking into our servers
+//connect to DB
+connectDB()
+//this works as a waterfall
+//custom logger middleware - we need to call next/built in middelware already does this
+app.use(logger)
+//built-in middleware to handle urlencoded data
+//in other words...form data
+app.use(credentials)
+app.use(cors(corsOptions))
 
-//SERVER-SIDE AUTHENTICATION
-/*Now when the auth variable is used as a parameter of an endpoint, the response from this endpoint reaches back to the client if and only if the credentials sent along with the request match.*/
-//middleware:
+// 'content-type: application/x-www-form-urlencoded
+app.use(express.urlencoded({extended: false}))
 
+//built-in middleware for json 
+app.use(json())
+//app.use(json());
 
-//create an endpoint that react client can call
-//get function will handle all the requests that go to local host 7000/photos
-//refer to admin documentation page for different types of get requests: https://cloudinary.com/documentation/admin_api#get_resources_by_tag
+//built-in middleware for cookies
+app.use(cookieParser())
+//serve static files
+//app.use(express.static(path.join(__dirname, '/public')))
+
+//provide a route, this will route any request coming to the subdir to the router file and gets handled there
+app.use('/', require('./routes/root'))// "/..."
+app.use('/register', require('./routes/register'))
+app.use('/auth', require('./routes/auth'))
+app.use('/refresh', require('./routes/refresh')) //issues a new access token
+app.use('/logout', require('./routes/logout'))
 app.get('/photos', async (req, res)=> { //async arrow function, express will pass in two arguments: req and response that u get
   const response = await axios.get(BASE_URL + '/resources/image', { 
     auth,
@@ -49,9 +73,23 @@ app.get('/search', async (req, res)=>{
     console.log("we been activated")
     return res.send(response.data)
 })
+//we want to protect routes from here, so anything after this line will use the verifyJWT middleware
+app.use(verifyJWT)
+app.use('/employees', require('./routes/api/employees'))//user doesn't need to type "api", just "employees"
 
-//tell node server what port to listen to
-const PORT = 7000;
-app.listen(PORT, console.log(`Server running on port ${PORT}`)) //``back quotes mean template string
+//ANYTHING THAT MADE IT HERE IS A 404 
+app.all('*', (req,res) => {
+   // res.sendFile(path.join(__dirname,'views', '404.html')) //this doesn't send a 404 code
+    res.status(404).sendFile(path.join(__dirname, 'views', '404.html')) //chaining with status command to send a 404 code
+})
 
-//we can get the env variables from .env and use it in our code
+
+app.use(errorHandler)
+//we don't want to listen for requests if connection Mongo fails
+//open event is emitted only once the connection is connected
+mongoose.connection.once('open', () => {
+    console.log('Connected to MongoDB')
+    app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
+})
+
+
