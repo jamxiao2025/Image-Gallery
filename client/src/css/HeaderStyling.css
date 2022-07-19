@@ -35,4 +35,11 @@
   color: darkgrey;
   font-weight: bold;
   cursor: pointer;
+  transition:  transform 250ms;
+  
+}
+
+.HeaderButton:hover{
+
+  transform: translateX(-8px)
 }

@@ -33,3 +33,13 @@ iframe{
   border: 0;
 }
 
+#yeezy{
+  transition: letter-spacing 1.5s, color 2s, background-color 2s;
+  background-color: transparent;
+}
+
+#yeezy:hover{
+  color: ECEEE3;
+  letter-spacing: 15px;
+}
+

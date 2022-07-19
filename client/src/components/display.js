@@ -51,7 +51,7 @@ const Display = () => {
       <Header/>
       <main className="DisplayMain">
       <div className="DisplayImageGrid">
-        {imageList.map((image)=> <Zoom><img class="DisplayImage"src={image.url} alt={image.public_id}></img></Zoom>)},
+        {imageList.map((image)=> <Zoom><div className="pic"><img class="DisplayImage"src={image.url} alt={image.public_id}></img></div></Zoom>)},
       </div>
       </main>
       </body>

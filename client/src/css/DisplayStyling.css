@@ -18,6 +18,11 @@ img {
 	height: 100%;
 }
 
+.pic{
+	position: relative;
+	height: 300px;
+}
+
 .DisplayImage {
 	object-fit: contain;
 	width: 100%;

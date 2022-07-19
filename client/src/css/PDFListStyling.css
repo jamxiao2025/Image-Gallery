@@ -1,7 +1,19 @@
-.artcenter{
-
+@keyframes transitionColor{
+  0% {
+    background-color: white;
+  }
+  100%{
+    background-color: grey;
+  }
 }
-
+@keyframes revertColor{
+  0% {
+    background-color: grey;
+  }
+  100%{
+    background-color: white;
+  }
+}
 .PDFGrid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -9,7 +21,9 @@
   grid-template-areas:
   "yeezy . . . ."
   ". . . . ."
-  ". . . . ."
+  ". . . . .";
+  transition: background-color 5s;
+  transition-delay: 1s;
 }
 
 #yeezy{
@@ -28,3 +42,4 @@
 #yeezy:hover{
   color: rgba(236, 238, 227, 1)
 }
+
