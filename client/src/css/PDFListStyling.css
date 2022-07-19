@@ -1,19 +1,4 @@
-@keyframes transitionColor{
-  0% {
-    background-color: white;
-  }
-  100%{
-    background-color: grey;
-  }
-}
-@keyframes revertColor{
-  0% {
-    background-color: grey;
-  }
-  100%{
-    background-color: white;
-  }
-}
+
 .PDFGrid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -43,3 +28,9 @@
   color: rgba(236, 238, 227, 1)
 }
 
+.slatt{
+  transition: background-color 2s;
+}
+#transition.slatt{
+   background-color: rgb(128,128,128);
+}

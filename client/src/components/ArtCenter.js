@@ -14,10 +14,12 @@ const ArtCenter = () => {
     navigate(`/${path}`)
   }
   const setHover = (e) => {
-    backgroundRef.current.style = "animation: transitionColor 2s 1 normal forwards;";
+    backgroundRef.current.id="transition"
+    console.log(backgroundRef.current.id)
+  //  backgroundRef.current.style = "animation: transitionColor 2s 1 normal forwards;";
   }
   const removeHover = (e) => {
-    backgroundRef.current.style = "animation: revertColor 2s"
+    backgroundRef.current.id=""
   }
   return(
     <>
