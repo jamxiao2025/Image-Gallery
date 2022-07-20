@@ -1,6 +1,6 @@
 .halfborder1{
   z-index: -100;
-  position:absolute;
+  position:fixed;
   height:50%;
   width:50%;
   border-top-color: white;
@@ -8,7 +8,7 @@
 }
 .halfborder2{
   z-index: -100;
-  position: absolute;
+  position: fixed;
    height:100%;
   width:50%;
   border-top-color: white;
@@ -17,7 +17,7 @@
 }
 .halfborder3{
   z-index: -100;
-  position:absolute;
+  position:fixed;
   height:50%;  /*controls middle axis height */
   width:100%;
   border-top-color: white;
