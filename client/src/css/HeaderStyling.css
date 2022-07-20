@@ -10,6 +10,7 @@
 }
 
 #start{
+  padding-right: 50px;
   align-self: start;
 }
 #startinvis{
@@ -19,6 +20,7 @@
   cursor: auto;
 }
 #end{
+  padding-left: 50px;
   align-self: end;
 }
 
