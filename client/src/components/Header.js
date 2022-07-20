@@ -17,7 +17,6 @@ const Header = (props) => {
   const handleClick =  (e) => {
       setAuth({})
       console.log('header logout secured')
-      ref.current.style = {animation: "scale 1.5s both"}
       navigate("/",  { replace: true})
     }
     
@@ -38,13 +37,13 @@ const Header = (props) => {
       </header>
     ):( add===undefined ?(
       <header id="HeaderClass">
-        <button ref={ref} id="start" className="HeaderButton" onClick={handleClick} disabled="disabled" >exit</button>
+        <button ref={ref} id="start" className="HeaderButton" onClick={handleClick} >exit</button>
         <button ref={ref} id="end" className="HeaderButton" onClick={()=>navigate(-1)}>back</button>
 
       </header>
     ):(
       <header id="HeaderClass">
-        <button ref={ref} id="start" className="HeaderButton" onClick={handleClick} disabled="disabled" >exit</button>
+        <button ref={ref} id="start" className="HeaderButton" onClick={handleClick}>exit</button>
         <button ref={ref} id="end" className="HeaderButton" onClick={()=>navigate(-1)}>back</button>
 
       </header>

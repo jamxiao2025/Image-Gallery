@@ -17,7 +17,7 @@ const Portal = () => {
     if(btn === 'artcenter'){
       navigate("/artcenter", {state: {prevpage: location} })
     }
-    else if (btn ==='PortalExit'){
+    else if (btn ==='HeaderButton'){
       navigate("/")
     }else{
       navigate("/search", {state:{prevpage: location}})

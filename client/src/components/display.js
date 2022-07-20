@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
-import { getImages, searchImages } from '../api';
+import { searchImages } from '../api';
 import "../css/App.css"
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
@@ -37,7 +37,7 @@ const Display = () => {
   
 const handleLoadMoreButtonClick = async () => {
 
-  const responseJson = await getImages(nextCursor);
+  const responseJson = await searchImages(nextCursor);
   setImageList((currentImageList) => [
     ...currentImageList,
     ...responseJson.resources,
@@ -61,15 +61,6 @@ const handleLoadMoreButtonClick = async () => {
     ):(
      <> 
   <BorderGrid/>
-     <div className="container">
-      <div className="LoadButtonCenter">
-        <button id="sw"class="loadHide"onClick>+</button>
-        {nextCursor && (
-        <button id="se"onClick={handleLoadMoreButtonClick}>+</button>
-				)}
-        <button class="loadHide"id="si"onClick>+</button>
-        </div>
-      </div>
       <body className="DisplayBody">
       <Header/>
       <main className="DisplayMain">
@@ -78,6 +69,15 @@ const handleLoadMoreButtonClick = async () => {
       </div>
       </main>
       </body>
+      <div className="container">
+      <div className="LoadButtonCenter">
+        <button id="sw"class="loadHide"onClick>+</button>
+        {nextCursor && (
+        <button id="se"onClick={handleLoadMoreButtonClick}>+</button>
+				)}
+        <button class="loadHide"id="si"onClick>+</button>
+        </div>
+      </div>
       </>
     )}
     

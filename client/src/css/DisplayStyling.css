@@ -59,8 +59,8 @@ img {
   text-align: center;
 }
 
+
 .LoadButtonCenter{
-	z-index: 100;
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -100,3 +100,4 @@ img {
 #si{
 	align-self: end;
 }
+

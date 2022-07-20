@@ -5,6 +5,7 @@
 //the .env holds the API url 
 import {Shoes, Car} from './Regex'
 export const API_URL = process.env.REACT_APP_API_URL //export makes this usable by components
+
 export const getImages = async (nextCursor) => {
 
 	const params = new URLSearchParams();
@@ -38,7 +39,7 @@ export const searchImages = async (searchValue, nextCursor) => {
   console.log(`Post Regex, expr should be shoes, but is: ${expr}`)
   params.append(`expression`, expr)
   params.append(`with_field`, "tags")
-  params.append('max_results', 28)
+  params.append('max_results', 10)
   if (nextCursor) {
 		params.append('next_cursor', nextCursor);
 	}

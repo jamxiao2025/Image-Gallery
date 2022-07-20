@@ -60,7 +60,7 @@
 .HeaderButton:hover{
   transform: translateX(-8px);
 }
-:not(.HeaderButtonHide):hover{
+:not(.HeaderButtonHide):not(.nahMsg):hover{
   color: black;
 }
 @keyframes scale {
