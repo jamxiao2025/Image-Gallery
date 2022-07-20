@@ -56,18 +56,21 @@ app.get('/photos', async (req, res)=> { //async arrow function, express will pas
   const response = await axios.get(BASE_URL + '/resources/image', { 
     auth,
     params:{
-      max_results: 2
+      max_results: 10 /*this is where the number of load more images is controlled */
     }
    }) //get request to whatever the BASE_URL is
   return res.send(response.data)  //this is us repsonding to the request
 })
 //search method, search param is the endpoint
 app.get('/search', async (req, res)=>{
+  console.log(`Next cursor: ${req.query.next_cursor}`)
     const response = await axios.get(BASE_URL + '/resources/search', {
     auth,
     params :{
         expression: req.query.expression,
-        with_field: req.query.with_field
+        with_field: req.query.with_field,
+        max_results: req.query.max_results,
+        next_cursor: req.query.next_cursor
     }
     })
     console.log("we been activated")
