@@ -26,9 +26,7 @@ const Portal = () => {
   
   return(
     <>
-     <header id="PortalHeaderClass">
-        <button ref={ref} id="start" className="PortalExit" onClick={handleClick}>exit</button>
-      </header>
+     <Header remove="back"/>
     <body>
     {/*<BorderGrid/>*/}
       <main className="grid">

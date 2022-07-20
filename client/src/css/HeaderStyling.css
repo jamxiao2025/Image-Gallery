@@ -27,7 +27,7 @@
   margin-left: 2.5%;
   margin-right: 2.5%;
   margin-top:2.5%;
-  font-size: 1.17vw;
+  font-size: 2.93vh;
   outline: none;
   /*background-color: lightblue; Adds background to form */
   background-color: none;
@@ -35,11 +35,37 @@
   color: darkgrey;
   font-weight: bold;
   cursor: pointer;
-  transition:  transform 250ms;
-  
+  transition:  transform 250ms;  
+}
+.HeaderButtonHide{
+  color: transparent;
+  background-color: transparent;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  margin-top:2.5%;
+  font-size: 2.93vh;
+  outline: none;
+  /*background-color: lightblue; Adds background to form */
+  background-color: none;
+  border: none;
+  cursor: default;
+}
+
+.HeaderButtonHide:hover{
+  cursor: default;
 }
 
 .HeaderButton:hover{
-
-  transform: translateX(-8px)
+  transform: translateX(-8px);
+}
+:not(.HeaderButtonHide):hover{
+  color: black;
+}
+@keyframes scale {
+  50%{
+    transform: scale(0.5)
+  }
+  100%{
+    transform: scale(1)
+  }
 }

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
+import Header from '../Header'
 //import Logout from './Logout'
 //import '../css/LogoutStyling.css'
 import image1 from '../images/0001.jpg'
@@ -20,10 +21,7 @@ const YeezyPDF = () => {
   const navigate = useNavigate()
   return(
     <>
-     <header id="PortalHeaderClass">
-        <button id="startinvis" className="PortalExit" >exit</button>
-        <button id="end" className="PortalExit" onClick={()=>navigate(-1)}>back</button>
-      </header>
+     <Header remove="exit"/>
     <body className="ArtCenterBody">
     {/*}  <div class="halfborder"></div>*/}
 
