@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
-import { searchImages } from '../api';
+import { getImages, searchImages } from '../api';
 import "../css/App.css"
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
@@ -18,26 +18,35 @@ const Display = () => {
   //setImageList is the function that will update imageList
   const [searchValue, setSearchValue] = useState('')
   const [searchMessage, setSearchMessage] = useState('')
-  const [nextCursor, setNextCursor] = useState(null);
+  const [nextCursor, setNextCursor] = useState(null)
+  //const [nextCursor, setNextCursor] = useState(null);
+
 
   useEffect(()=>{
     const inputSearch = async() =>{
       const responseJson = await searchImages(query, nextCursor)
-      console.log(responseJson.resources.length)
-      setImageList(responseJson.resources)
-      setNextCursor(responseJson.next_cursor);
-      if (responseJson.resources.length === 0){
-        setSearchMessage("SORRY...NO RESULTS WERE FOUND!")
-      }else{
-        setSearchMessage("HERE ARE THE RESULTS!")
-      }
+      const nextcursor = responseJson.next_cursor
+      //  console.log(`ResponseJSON Length: ${responseJson.resources.length}`)
+        setImageList(responseJson.resources)
+        setNextCursor(nextcursor)
+       // console.log(`Max Results: ${responseJson.max_results}`) //this value doesn't get passed back either..
+       // console.log(`Next cursor is: ${nextCursor}`)
+       console.log("Resources:" + (responseJson.next_cursor))
+        if (responseJson.resources.length === 0){
+          setSearchMessage("SORRY...NO RESULTS WERE FOUND!")
+        }else{
+          setSearchMessage("HERE ARE THE RESULTS!")
+        }
+      
+      
     }
     inputSearch()
  }, []) //depen
   
+ 
 const handleLoadMoreButtonClick = async () => {
-
-  const responseJson = await searchImages(nextCursor);
+  console.log(`Prior to loading more images, next cursor is :  ${nextCursor}`)
+  const responseJson = await searchImages(query, nextCursor);
   setImageList((currentImageList) => [
     ...currentImageList,
     ...responseJson.resources,
@@ -73,7 +82,7 @@ const handleLoadMoreButtonClick = async () => {
       <div className="LoadButtonCenter">
         <button id="sw"class="loadHide"onClick>+</button>
         {nextCursor && (
-        <button id="se"onClick={handleLoadMoreButtonClick}>+</button>
+        <button id="se" onClick={handleLoadMoreButtonClick}>+</button>
 				)}
         <button class="loadHide"id="si"onClick>+</button>
         </div>

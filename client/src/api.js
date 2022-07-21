@@ -39,7 +39,9 @@ export const searchImages = async (searchValue, nextCursor) => {
   console.log(`Post Regex, expr should be shoes, but is: ${expr}`)
   params.append(`expression`, expr)
   params.append(`with_field`, "tags")
+  params.append('prefix', "home/YEEZY_SHOES")
   params.append('max_results', 10)
+
   if (nextCursor) {
 		params.append('next_cursor', nextCursor);
 	}
@@ -47,5 +49,6 @@ export const searchImages = async (searchValue, nextCursor) => {
  // const response = await fetch(`${API_URL}/search?${params}`)
   console.log(response)
   const responseJson = await response.json()
+  console.log(`Response in JSON form is ${responseJson.next_cursor}`) /*so this next cursor thing is working*/
   return responseJson
 }
