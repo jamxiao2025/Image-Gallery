@@ -63,15 +63,25 @@ app.get('/photos', async (req, res)=> { //async arrow function, express will pas
 })
 //search method, search param is the endpoint
 app.get('/search', async (req, res)=>{
+  const params = new URLSearchParams()
   console.log(`Next cursor: ${req.query.next_cursor}`)
+  /*
+  params.append(`expression`, expr)
+  params.append(`with_field`, "tags")
+  params.append('max_results', 1)
+  if (nextCursor) {
+		params.append('next_cursor', nextCursor);
+	}*/
+  params.append('expression', req.query.expression)
+  params.append('with_field', req.query.with_field)
+  params.append('prefix', req.query.prefix)
+  params.append('max_results', req.query.max_results)
+  if(req.query.next_cursor){
+    params.append('next_cursor', req.query.next_cursor)
+  }
     const response = await axios.get(BASE_URL + '/resources/search', {
     auth,
-    params :{
-        expression: req.query.expression,
-        with_field: req.query.with_field,
-        max_results: req.query.max_results,
-        next_cursor: req.query.next_cursor
-    }
+    params
     })
     console.log("we been activated")
     return res.send(response.data)
@@ -88,6 +98,10 @@ app.all('*', (req,res) => {
 
 
 app.use(errorHandler)
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.get("*", function (request, response) {
+  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
 //we don't want to listen for requests if connection Mongo fails
 //open event is emitted only once the connection is connected
 mongoose.connection.once('open', () => {

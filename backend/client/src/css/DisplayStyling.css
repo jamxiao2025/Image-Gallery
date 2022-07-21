@@ -8,30 +8,30 @@
 }*/
 /*
 img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }*/
 
 .DisplayMain{
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .pic{
-	position: relative;
-	height: 300px;
+  position: relative;
+  height: 300px;
 }
 
 .DisplayImage {
-	object-fit: contain;
-	width: 100%;
-	height: 100%;
-	justify-self: stretch;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  justify-self: stretch;
 }
 /*
 .DisplayImageGrid button:hover{
-	-o-transition:.5s;
+  -o-transition:.5s;
   -ms-transition:.5s;
   -moz-transition:.5s;
   -webkit-transition:.5s;
@@ -40,20 +40,20 @@ img {
 }
 */
 .DisplayImageGrid {
-	padding-top: 7%;
-	display: grid;
-	width: 70%;
-	margin: auto;
-	/*0.5rem*/
-	gap: 5%;
-	row-gap: 2.5%;
-	grid-template-columns: repeat(3, minmax(0px, 1fr)); /*0 prevents images from clipping outside border-box*/
-	grid-template-rows: auto;
+  padding-top: 7%;
+  display: grid;
+  width: 70%;
+  margin: auto;
+  /*0.5rem*/
+  gap: 5%;
+  row-gap: 2.5%;
+  grid-template-columns: repeat(3, minmax(0px, 1fr)); /*0 prevents images from clipping outside border-box*/
+  grid-template-rows: auto;
 }
 
 /*https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container*/
 .DisplayBodyNah{
-	display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
@@ -68,20 +68,20 @@ img {
   top: 0;
   left: 0;
   right: 0;
-	padding-top: 80px;
+  padding-top: 80px;
 }
 .loadHide{
-	color: transparent;
+  color: transparent;
   background-color: transparent;
-	border: none;
-	cursor: default;
+  border: none;
+  cursor: default;
 }
 #sw{
   align-self: start;
 }
 #se{ /*main button right here*/
   align-self: center;
-	background-color: transparent;
+  background-color: transparent;
   font-size: 2.93vh;
   outline: none;
   /*background-color: lightblue; Adds background to form */
@@ -91,13 +91,15 @@ img {
   font-weight: bold;
   cursor: pointer;
   transition:  transform 250ms;  
-	padding: 15px;
+  padding: 15px;
 }
 #se:hover{
-		transform: scale(1.5);
-	}
+    transform: scale(1.5);
+  }
 
 #si{
-	align-self: end;
+  align-self: end;
 }
+
+
 

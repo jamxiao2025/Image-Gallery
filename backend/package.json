@@ -4,8 +4,9 @@
   "description": "backend for image requests functions, environement variables, and authentication/registration functions",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
-    "dev": "nodemon server"
+    "start": "node server.js", 
+    "heroku-postbuild": "cd client && npm install && npm run build"
+    
   },
   "author": "",
   "license": "ISC",

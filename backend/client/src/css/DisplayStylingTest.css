@@ -1,0 +1,124 @@
+/*button:hover{
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+  box-shadow: 10px 10px 5px #888888;
+}*/
+/*
+img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}*/
+/*
+.DisplayMain{
+	width: 100%;
+	height: 100%;
+}
+/*
+.pic{
+	position: relative;
+	height: 300px;
+}
+/*
+.DisplayImage {
+	object-fit: contain;
+	width: 100%;
+	height: 100%;
+	justify-self: stretch;
+}
+/*
+.DisplayImageGrid button:hover{
+	-o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+  box-shadow: 10px 10px 5px #888888;
+}
+*/
+/*
+.DisplayImageGrid {
+	padding-top: 7%;
+	display: grid;
+	width: 70%;
+	margin: auto;
+	/*0.5rem
+	gap: 5%;
+	row-gap: 2.5%;
+	grid-template-columns: repeat(3, minmax(0px, 1fr)); /*0 prevents images from clipping outside border-box
+	grid-template-rows: auto;
+}
+*/
+/*
+.DisplayBodyNah{
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.loadHide{
+	color: transparent;
+  background-color: transparent;
+	border: none;
+	cursor: default;
+}
+.DisplayBody{
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+}
+
+.DisplayImage {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.DisplayImageGrid {
+	display: grid;
+	gap: 0.5rem;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+
+
+.LoadButtonCenter{
+	display: flex;
+	justify-content: center;
+}
+#sw{
+  align-self: start;
+}
+#se{ /*main button right here*/
+  /*
+  align-self: center;
+	background-color: transparent;
+  font-size: 2.93vh;
+  outline: none;
+  /*background-color: lightblue; Adds background to form */
+	/*
+  background-color: none;
+  border: none;
+  color: darkgrey;
+  font-weight: bold;
+  cursor: pointer;
+  transition:  transform 250ms;  
+	padding: 15px;
+  font-size: 36px;
+	border-radius: 10px;
+	border: none;
+	padding: 18px;
+	margin: 3rem 0 3rem 0;
+}
+#se:hover{
+		transform: scale(1.5);
+	}
+
+#si{
+	align-self: end;
+}
+
